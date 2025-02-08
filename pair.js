@@ -107,20 +107,20 @@ router.get("/", async (req, res) => {
           lastDisconnect.error.output.statusCode !== 401
         ) {
           await delay(10000);
-          RobinPair();
+          manishaPair();
         }
       });
     } catch (err) {
       exec("pm2 restart BOT-PIR");
       console.log("service restarted");
-      RobinPair();
+      manishaPair();
       await removeFile("./session");
       if (!res.headersSent) {
         await res.send({ code: "Service Unavailable" });
       }
     }
   }
-  return await RobinPair();
+  return await manishaPair();
 });
 
 process.on("uncaughtException", function (err) {
