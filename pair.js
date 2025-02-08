@@ -81,7 +81,7 @@ router.get("/", async (req, res) => {
               ""
             );
 
-            const sid = `◁─☆────────────☆─⊷▷\n\n*BOT PIR [my github]*\n\n👉https://github.com/manisha-Official18👈\n\n*BOT PIR [owner]*\n\n*🪀(94721551183)🪀\n\n◁─☆────────────☆─⊷▷`;
+            const sid = `◁─☆────────────☆─⊷▷\n\n*BOT PIR [my github]*\n\n👉▷( https://github.com/manisha-Official18 )◁👈\n\n*BOT PIR [owner]*\n\n*🪀(94721551183)🪀\n\n◁─☆────────────☆─⊷▷`;
             const mg = `◁─☆────☠──☠──☠────☆─⊷▷\n\n⚠️ *Do not share this code to anyone* ⚠️\n\n◁─☆────────────☆─⊷▷`;
             const dt = await manishaPairWeb.sendMessage(user_jid, {
               image: {
