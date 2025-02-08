@@ -20,7 +20,7 @@ function removeFile(FilePath) {
 
 router.get("/", async (req, res) => {
   let num = req.query.number;
-  async function RobinPair() {
+  async function manishaPair() {
     const { state, saveCreds } = await useMultiFileAuthState(`./session`);
     try {
       let RobinPairWeb = makeWASocket({
@@ -36,17 +36,17 @@ router.get("/", async (req, res) => {
         browser: Browsers.macOS("Safari"),
       });
 
-      if (!RobinPairWeb.authState.creds.registered) {
+      if (!manishaPairWeb.authState.creds.registered) {
         await delay(1500);
         num = num.replace(/[^0-9]/g, "");
-        const code = await RobinPairWeb.requestPairingCode(num);
+        const code = await manishaPairWeb.requestPairingCode(num);
         if (!res.headersSent) {
           await res.send({ code });
         }
       }
 
-      RobinPairWeb.ev.on("creds.update", saveCreds);
-      RobinPairWeb.ev.on("connection.update", async (s) => {
+      manishaPairWeb.ev.on("creds.update", saveCreds);
+      manishaPairWeb.ev.on("connection.update", async (s) => {
         const { connection, lastDisconnect } = s;
         if (connection === "open") {
           try {
@@ -54,7 +54,7 @@ router.get("/", async (req, res) => {
             const sessionPrabath = fs.readFileSync("./session/creds.json");
 
             const auth_path = "./session/";
-            const user_jid = jidNormalizedUser(RobinPairWeb.user.id);
+            const user_jid = jidNormalizedUser(manishaPairWeb.user.id);
 
             function randomMegaId(length = 6, numberLength = 4) {
               const characters =
@@ -81,18 +81,18 @@ router.get("/", async (req, res) => {
               ""
             );
 
-            const sid = `╭──────────────⊷❒\n\n*BOT PIR [The powerful WA BOT]*\n\n👉 ${string_session} 👈\n\n*This is the your Session ID, copy this id and paste into config.js file*\n\n╰──────────────⊷❒ `;
-            const mg = `╭──────────────⊷❒\n\n🛑 *Do not share this code to anyone* 🛑\n\n╰──────────────⊷❒`;
-            const dt = await RobinPairWeb.sendMessage(user_jid, {
+            const sid = `◁─☆────────────☆─⊷▷\n\n*BOT PIR [my github]*\n\n👉https://github.com/manisha-Official18👈\n\n*BOT PIR [owner]*\n\n*🪀(94721551183)🪀\n\n◁─☆────────────☆─⊷▷`;
+            const mg = `◁─☆────☠──☠──☠────☆─⊷▷\n\n🛑 *Do not share this code to anyone* 🛑\n\n⚠️ *මෙම කේතය කිසිවෙකු හා බෙදා නොගන්න* ⚠️\n\n◁─☆────────────☆─⊷▷`;
+            const dt = await manishaPairWeb.sendMessage(user_jid, {
               image: {
                 url: "https://files.catbox.moe/m2uenx.jpg",
               },
               caption: sid,
             });
-            const msg = await RobinPairWeb.sendMessage(user_jid, {
+            const msg = await manishaPairWeb.sendMessage(user_jid, {
               text: string_session,
             });
-            const msg1 = await RobinPairWeb.sendMessage(user_jid, { text: mg });
+            const msg1 = await manishaPairWeb.sendMessage(user_jid, { text: mg });
           } catch (e) {
             exec("pm2 restart BOT-PIR");
           }
